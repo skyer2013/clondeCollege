@@ -3,7 +3,7 @@ package com.cloudunicollege.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
-import com.dao.BaseDao;
+import com.cloudunicollege.dao.BaseDao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

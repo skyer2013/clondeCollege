@@ -1,4 +1,4 @@
-﻿package com.cloudunicollege.controller;
+package com.cloudunicollege.controller;
 
 import com.cloudunicollege.entities.po.User;
 import com.cloudunicollege.service.UserService;
@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by celine on 2015/6/28.

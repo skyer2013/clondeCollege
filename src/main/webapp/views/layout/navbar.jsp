@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">王小羊的网站</a>
+      <a class="navbar-brand" href="#">cloud college</a>
     </div>
         <div id="navbar" class="navbar-collapse collapse">
           <% if (session.getAttribute("user")!=null){
