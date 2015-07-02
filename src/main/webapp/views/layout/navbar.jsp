@@ -25,12 +25,13 @@
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
-            <button type="submit" class="btn btn-success">登录</button>
+            <a id="btn_submit" href="javascript:;" class="btn btn-success">登录</a>
             <a href="<%=request.getContextPath()%>/account/register" class="btn btn-success">注册</a>
           </form>
           <%
             }
           %>
         </div><!--/.navbar-collapse -->
+
   </div>
 </nav>

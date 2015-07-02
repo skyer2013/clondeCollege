@@ -6,10 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by celine on 2015/6/28.
@@ -39,6 +42,30 @@ public class AccountController {
         }
         return modelAndView;
     }
+    @RequestMapping(value = "/loginAjax",method = RequestMethod.POST)
+    public @ResponseBody Map<String,Object> loginAjax(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            HttpServletRequest request
+
+    ){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        User rstUser =userService.findUserByNameAndPassword(user);
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        if(rstUser!=null){
+            request.getSession().setAttribute("user", rstUser);
+            modelMap.put("msg","success!");
+            modelMap.put("name",rstUser.getName());
+        }else{
+            modelMap.put("msg","fail!");
+        }
+
+        return modelMap;
+    }
+
+
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().removeAttribute("user");
