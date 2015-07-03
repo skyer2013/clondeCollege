@@ -14,9 +14,3 @@
   </script>
   <!-- commonjs -->
   <script src="<%=request.getContextPath() %>/resources/js/common.js"></script>
-  <script>
-      $(function(){
-          initLogin($("#btn_submit"));
-      });
-
-  </script>

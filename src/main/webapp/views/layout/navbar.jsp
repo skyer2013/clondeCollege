@@ -13,7 +13,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <% if (session.getAttribute("user")!=null){
             %>
-          <div class="navbar-brand navbar-right white">欢迎您，${user.name}<a href="<%=request.getContextPath()%>/account/logout">[登出]</a></div>
+          <div class="navbar-brand navbar-right white">欢迎您，${user.name}<button onclick="btnLogoutClick(this)">[登出]</button></div>
           <%
           }else{
           %>
@@ -25,8 +25,8 @@
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
-            <a id="btn_submit" href="javascript:;" class="btn btn-success">登录</a>
-            <a href="<%=request.getContextPath()%>/account/register" class="btn btn-success">注册</a>
+            <button id="btn_submit" onclick="btnLoginClick(this)" class="btn btn-success">登录</button>
+            <a href="<%=request.getContextPath()%>/account/register"  class="btn btn-success">注册</a>
           </form>
           <%
             }

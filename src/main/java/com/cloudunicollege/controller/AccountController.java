@@ -3,10 +3,8 @@ package com.cloudunicollege.controller;
 import com.cloudunicollege.entities.po.User;
 import com.cloudunicollege.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -43,28 +41,27 @@ public class AccountController {
         return modelAndView;
     }
     @RequestMapping(value = "/loginAjax",method = RequestMethod.POST)
-    public @ResponseBody Map<String,Object> loginAjax(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
+    public @ResponseBody String loginAjax(
+            User user,
             HttpServletRequest request
-
     ){
-        User user = new User();
+/*        User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(password);*/
         User rstUser =userService.findUserByNameAndPassword(user);
-        Map<String, Object> modelMap = new HashMap<String, Object>();
-        if(rstUser!=null){
-            request.getSession().setAttribute("user", rstUser);
-            modelMap.put("msg","success!");
-            modelMap.put("name",rstUser.getName());
-        }else{
-            modelMap.put("msg","fail!");
-        }
-
-        return modelMap;
+        request.getSession().setAttribute("user",rstUser);
+        return rstUser.getName();
     }
-
+    @RequestMapping(value = "/logoutAjax",method = RequestMethod.POST)
+    public @ResponseBody String logoutAjax(
+            HttpServletRequest request
+    ){
+/*        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);*/
+        request.getSession().removeAttribute("user");
+        return "true";
+    }
 
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request){
